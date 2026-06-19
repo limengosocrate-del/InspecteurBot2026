@@ -221,3 +221,97 @@ text-align:center;
 }
 
   }
+
+/* ==========================
+   FORMULAIRES
+========================== */
+
+.form-container{
+
+width:95%;
+max-width:550px;
+
+margin:40px auto;
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+}
+
+.form-container h1{
+
+text-align:center;
+
+color:#0d47a1;
+
+margin-bottom:25px;
+
+}
+
+.input-box{
+
+margin-bottom:18px;
+
+}
+
+.input-box label{
+
+display:block;
+
+margin-bottom:8px;
+
+font-weight:600;
+
+}
+
+.input-box input,
+.input-box select{
+
+width:100%;
+
+padding:14px;
+
+border:1px solid #ccc;
+
+border-radius:10px;
+
+font-size:15px;
+
+}
+
+.btn-register{
+
+width:100%;
+
+padding:15px;
+
+background:#0d47a1;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+.btn-register:hover{
+
+background:#1565c0;
+
+}
+
+.check{
+
+font-size:15px;
+
+}
