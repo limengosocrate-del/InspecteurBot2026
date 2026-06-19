@@ -315,3 +315,43 @@ background:#1565c0;
 font-size:15px;
 
 }
+
+/* ===========================
+Connexion
+=========================== */
+
+.remember{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+font-size:15px;
+
+margin-top:10px;
+
+}
+
+.remember input{
+
+margin-right:8px;
+
+}
+
+.form-container a{
+
+text-decoration:none;
+
+color:#1565c0;
+
+font-weight:600;
+
+}
+
+.form-container a:hover{
+
+text-decoration:underline;
+
+}
