@@ -315,7 +315,7 @@ font-size:28px;
 font-size:16px;
 }
 
-    }
+}
 
 //==============================
 // INSPECTEUR IA
@@ -527,4 +527,51 @@ height:50px;
 border-radius:50%;
 border:3px solid #005ecb;
 
-  }
+}
+
+/*==============================
+NOTIFICATION MODERNE
+==============================*/
+
+.notification-box{
+
+position:fixed;
+
+right:25px;
+
+bottom:-120px;
+
+background:#005ecb;
+
+color:white;
+
+padding:15px 25px;
+
+border-radius:12px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+transition:.5s;
+
+z-index:9999;
+
+}
+
+.notification-box.show{
+
+bottom:25px;
+
+}
+
+/*==============================
+MENU MOBILE
+==============================*/
+
+.sidebar.open{
+
+left:0;
+
+}
+
+
+
