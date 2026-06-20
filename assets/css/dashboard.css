@@ -1,1 +1,530 @@
+/* ==========================
+   INSPECTEURBOT RDC - CSS
+   Créé par Inspecteur Limengo (Pmiller)
+========================== */
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+background:#eef3fb;
+display:flex;
+min-height:100vh;
+color:#1f2937;
+}
+
+/* ==========================
+SIDEBAR
+========================== */
+
+.sidebar{
+width:270px;
+background:linear-gradient(180deg,#003b8f,#0b63d1);
+color:white;
+position:fixed;
+left:0;
+top:0;
+bottom:0;
+overflow:auto;
+box-shadow:5px 0 20px rgba(0,0,0,.2);
+}
+
+.logo{
+padding:30px 20px;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.logo img{
+width:90px;
+margin-bottom:10px;
+}
+
+.logo h2{
+font-size:28px;
+}
+
+.logo p{
+font-size:13px;
+opacity:.9;
+}
+
+.sidebar ul{
+list-style:none;
+padding:20px 0;
+}
+
+.sidebar ul li{
+margin:6px 0;
+}
+
+.sidebar ul li a{
+display:block;
+padding:15px 25px;
+text-decoration:none;
+color:white;
+font-size:17px;
+transition:.3s;
+}
+
+.sidebar ul li a:hover{
+background:white;
+color:#0056b3;
+border-radius:0 30px 30px 0;
+padding-left:35px;
+}
+
+.sidebar i{
+margin-right:12px;
+width:22px;
+text-align:center;
+}
+
+/* ==========================
+MAIN
+========================== */
+
+.main{
+margin-left:270px;
+width:calc(100% - 270px);
+}
+
+/* ==========================
+TOPBAR
+========================== */
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 30px;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+position:sticky;
+top:0;
+z-index:99;
+}
+
+.search input{
+width:450px;
+padding:14px;
+border:none;
+border-radius:30px;
+background:#edf2f7;
+font-size:15px;
+}
+
+.user{
+display:flex;
+align-items:center;
+gap:20px;
+font-weight:bold;
+}
+
+.user i{
+font-size:24px;
+color:#0b63d1;
+cursor:pointer;
+}
+
+/* ==========================
+BANNIÈRE
+========================== */
+
+.igt-banner{
+height:300px;
+background:linear-gradient(rgba(0,54,128,.75),rgba(0,54,128,.75)),
+url("../assets/fond-rdc.jpg") center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.overlay{
+padding:20px;
+}
+
+.logo-transparent{
+width:120px;
+margin-bottom:15px;
+opacity:.95;
+}
+
+.overlay h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.overlay p{
+font-size:20px;
+}
+
+/* ==========================
+CARTES
+========================== */
+
+.card{
+background:white;
+margin:25px;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card h2{
+color:#004ea8;
+margin-bottom:15px;
+}
+
+.card ul{
+margin-top:10px;
+padding-left:20px;
+}
+
+.card li{
+margin:8px 0;
+}
+
+/* ==========================
+GRILLE
+========================== */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:20px;
+padding:0 25px;
+}
+
+.grid .card{
+margin:0;
+}
+
+.grid input{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+.grid button{
+margin-top:15px;
+padding:14px 22px;
+border:none;
+border-radius:10px;
+background:#005ecb;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+.grid button:hover{
+background:#003f91;
+}
+
+/* ==========================
+STATISTIQUES
+========================== */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:25px;
+}
+
+.stats .card{
+margin:0;
+text-align:center;
+}
+
+.stats h3{
+font-size:18px;
+color:#555;
+}
+
+.stats p{
+font-size:38px;
+font-weight:bold;
+margin-top:15px;
+color:#005ecb;
+}
+
+/* ==========================
+FOOTER
+========================== */
+
+footer{
+margin-top:40px;
+padding:25px;
+background:#003b8f;
+color:white;
+text-align:center;
+font-size:15px;
+}
+
+/* ==========================
+RESPONSIVE
+========================== */
+
+@media(max-width:900px){
+
+.sidebar{
+width:100%;
+height:auto;
+position:relative;
+}
+
+.main{
+margin-left:0;
+width:100%;
+}
+
+.topbar{
+flex-direction:column;
+gap:15px;
+}
+
+.search input{
+width:100%;
+}
+
+.grid,
+.stats{
+grid-template-columns:1fr;
+}
+
+.overlay h1{
+font-size:28px;
+}
+
+.overlay p{
+font-size:16px;
+}
+
+    }
+
+//==============================
+// INSPECTEUR IA
+//==============================
+
+function repondreIA(){
+
+let question=document.getElementById("questionIA").value.toLowerCase();
+
+let reponse=document.getElementById("reponseIA");
+
+if(question.includes("contrat")){
+
+reponse.innerHTML=
+"Le contrat de travail est un accord entre l'employeur et le travailleur conformément au Code du Travail.";
+
+}
+
+else if(question.includes("licenciement")){
+
+reponse.innerHTML=
+"Le licenciement doit respecter les dispositions prévues par le Code du Travail et les procédures applicables.";
+
+}
+
+else if(question.includes("salaire")){
+
+reponse.innerHTML=
+"Le salaire doit être payé conformément au contrat de travail et aux dispositions légales en vigueur.";
+
+}
+
+else if(question.includes("inspection")){
+
+reponse.innerHTML=
+"L'inspection du travail consiste à contrôler l'application de la législation sociale dans les entreprises.";
+
+}
+
+else{
+
+reponse.innerHTML=
+"Je n'ai pas encore cette réponse. Cette fonction sera enrichie progressivement avec l'ensemble du Code du Travail et les procédures de l'IGT.";
+
+}
+   
+   }
+
+/*=========================
+TABLEAU
+=========================*/
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:20px;
+
+}
+
+table th{
+
+background:#005ecb;
+
+color:white;
+
+padding:15px;
+
+}
+
+table td{
+
+padding:15px;
+
+border-bottom:1px solid #ddd;
+
+}
+
+table tr:hover{
+
+background:#f5f8ff;
+
+}
+
+.badge{
+
+padding:6px 12px;
+
+border-radius:20px;
+
+color:white;
+
+font-size:13px;
+
+font-weight:bold;
+
+}
+
+.termine{
+
+background:#28a745;
+
+}
+
+.attente{
+
+background:#ff9800;
+
+}
+
+.programme{
+
+background:#007bff;
+
+}
+
+/*==========================
+TOPBAR V2
+==========================*/
+
+.left-top,
+.right-top{
+
+display:flex;
+align-items:center;
+gap:20px;
+
+}
+
+.topbar{
+
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+
+}
+
+.menu-btn{
+
+display:none;
+padding:10px;
+border:none;
+background:#005ecb;
+color:white;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+.search{
+
+position:relative;
+
+}
+
+.search input{
+
+padding-right:45px;
+
+}
+
+.search i{
+
+position:absolute;
+right:15px;
+top:15px;
+color:#888;
+
+}
+
+.notification{
+
+position:relative;
+font-size:24px;
+cursor:pointer;
+
+}
+
+.notification .badge{
+
+position:absolute;
+top:-8px;
+right:-8px;
+background:red;
+width:20px;
+height:20px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:11px;
+
+}
+
+.profile-user{
+
+display:flex;
+align-items:center;
+gap:12px;
+
+}
+
+.profile-user img{
+
+width:50px;
+height:50px;
+border-radius:50%;
+border:3px solid #005ecb;
+
+  }
