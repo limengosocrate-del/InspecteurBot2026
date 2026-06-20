@@ -2,95 +2,294 @@
 <html lang="fr">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGT - Tableau de Bord</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Tableau de Bord | InspecteurBot IA</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<header class="hero">
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar">
 
-<img src="images/batiment-igt.jpg" class="hero-image">
+    <div class="profile">
+        <img src="assets/logo.png" alt="IGT">
+        <h3>InspecteurBot RDC</h3>
+        <p>IGT System</p>
+    </div>
 
-<div class="hero-overlay"></div>
+    <ul class="menu">
 
-<div class="hero-content">
+        <li><i class="fa fa-home"></i> Accueil</li>
 
-<img src="images/logo-igt.png" class="logo">
+        <li><i class="fa fa-landmark"></i> IGT</li>
 
-<h1>TABLEAU DE BORD</h1>
+        <li><i class="fa fa-book"></i> Code du Travail</li>
 
-<h3>InspecteurBot IA</h3>
+        <li class="dropdown">
+            <i class="fa fa-file-alt"></i> Fiches de contrôle
+            <ul>
+                <li>F01</li>
+                <li>F02</li>
+                <li>F03</li>
+                <li>F04</li>
+                <li>F05</li>
+                <li>F06</li>
+                <li>F07</li>
+                <li>S01</li>
+                <li>S02</li>
+                <li>S03</li>
+                <li>ONEM</li>
+                <li>SMIG</li>
+            </ul>
+        </li>
 
-<p>Bienvenue dans votre espace de travail.</p>
+        <li><i class="fa fa-building"></i> Entreprises</li>
+
+        <li><i class="fa fa-users"></i> Personnel</li>
+
+        <li><i class="fa fa-calendar"></i> Missions</li>
+
+        <li><i class="fa fa-exclamation-triangle"></i> Infractions</li>
+
+        <li><i class="fa fa-chart-line"></i> Statistiques</li>
+
+        <li><i class="fa fa-robot"></i> IA Assistant</li>
+
+        <li><i class="fa fa-folder"></i> Archives</li>
+
+        <li><i class="fa fa-cog"></i> Paramètres</li>
+
+        <li class="logout"><i class="fa fa-sign-out-alt"></i> Déconnexion</li>
+
+    </ul>
 
 </div>
 
-</header>
+<!-- ================= MAIN CONTENT ================= -->
+<div class="main">
 
-<section class="dashboard">
+    <!-- TOP BAR -->
+    <div class="topbar">
+
+<div class="left-top">
+
+<button class="menu-btn">
+<i class="fa fa-bars"></i>
+</button>
 
 <h2>
-
-<i class="fa-solid fa-chart-line"></i>
-
-Vue Générale
-
+<i class="fa fa-landmark"></i>
+Inspection Générale du Travail - RDC
 </h2>
 
-<div class="dashboard-cards">
+</div>
 
+<div class="right-top">
+
+<div class="search">
+
+<input
+type="text"
+placeholder="Rechercher une entreprise, une fiche, un inspecteur...">
+
+<i class="fa fa-search"></i>
+
+</div>
+
+<div class="notification">
+
+<i class="fa fa-bell"></i>
+
+<span class="badge">5</span>
+
+</div>
+
+<div class="clock" id="clock"></div>
+
+<div class="profile-user">
+
+<img src="assets/user.png">
+
+<div>
+
+<h4>Inspecteur</h4>
+
+<p>Administrateur</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+    <!-- IGT INFO PANEL -->
+    <div class="card">
+
+        <h3>📌 Module IGT</h3>
+
+        <p>
+            L’Inspection Générale du Travail (IGT) est un service public chargé du contrôle,
+            de l’application du Code du Travail, et de la protection des travailleurs en RDC.
+        </p>
+
+        <ul>
+            <li>🏛 Ministère de tutelle : Emploi et Travail</li>
+            <li>👨‍💼 Inspecteur Général du Travail</li>
+            <li>📍 Directions provinciales</li>
+            <li>⚖ Mission : Contrôle et conformité</li>
+        </ul>
+
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="grid">
+
+        <div class="card box">
+            <i class="fa fa-file"></i>
+            <h4>Créer Fiche F01</h4>
+        </div>
+
+        <div class="card box">
+            <i class="fa fa-search"></i>
+            <h4>Code du Travail</h4>
+        </div>
+
+        <div class="card box">
+            <i class="fa fa-robot"></i>
+            <h4>IA Assistant</h4>
+        </div>
+
+        <div class="card box">
+            <i class="fa fa-chart-bar"></i>
+            <h4>Statistiques</h4>
+        </div>
+
+        <div class="card box" onclick="ouvrirIA()">
+    <i class="fa fa-robot"></i>
+    <h4>IA Assistant</h4>
+</div>
+
+<div class="card box" onclick="rechercherCodeTravail()">
+    <i class="fa fa-book"></i>
+    <h4>Code du Travail IA</h4>
+</div>
+
+<div class="card box" onclick="analyserFicheDemo()">
+    <i class="fa fa-chart-line"></i>
+    <h4>Analyse IA Fiche</h4>
+</div>
+
+    </div>
+
+    <!-- STATISTIQUES -->
+    <div class="card">
+
+        <h3>📊 Statistiques globales</h3>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h4>Inspections</h4>
+                <p>1 245</p>
+            </div>
+
+            <div class="stat">
+                <h4>Entreprises</h4>
+                <p>560</p>
+            </div>
+
+            <div class="stat">
+                <h4>Infractions</h4>
+                <p>132</p>
+            </div>
+
+            <div class="stat">
+                <h4>Rapports</h4>
+                <p>98</p>
 <div class="card">
 
-<i class="fa-solid fa-building"></i>
+<h2>
+<i class="fa fa-calendar-check"></i>
+Missions du jour
+</h2>
 
-<h3>Entreprises</h3>
+<table>
 
-<h1 id="entreprises">0</h1>
+<tr>
+
+<th>Date</th>
+
+<th>Entreprise</th>
+
+<th>Inspecteur</th>
+
+<th>État</th>
+
+</tr>
+
+<tr>
+
+<td>12/08/2026</td>
+
+<td>RAWBANK</td>
+
+<td>Limengo</td>
+
+<td><span class="badge programme">Programmée</span></td>
+
+</tr>
+
+<tr>
+
+<td>12/08/2026</td>
+
+<td>SNEL</td>
+
+<td>Mukendi</td>
+
+<td><span class="badge attente">En cours</span></td>
+
+</tr>
+
+<tr>
+
+<td>12/08/2026</td>
+
+<td>BRALIMA</td>
+
+<td>Kabeya</td>
+
+<td><span class="badge termine">Terminée</span></td>
+
+</tr>
+
+</table>
+
+</div>
+            
+        </div>
+
+    </div>
 
 </div>
 
-<div class="card">
+<!-- CLOCK SCRIPT -->
+<script>
+setInterval(() => {
+    document.getElementById("clock").innerText =
+        new Date().toLocaleTimeString();
+}, 1000);
+</script>
 
-<i class="fa-solid fa-users"></i>
+<script src="js/dashboard.js"></script>
 
-<h3>Travailleurs</h3>
-
-<h1 id="travailleurs">0</h1>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-file-circle-check"></i>
-
-<h3>Inspections</h3>
-
-<h1 id="inspections">0</h1>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-scale-balanced"></i>
-
-<h3>Procès-Verbaux</h3>
-
-<h1 id="pv">0</h1>
-
-</div>
-
-</div>
-
-  </section>
+</body>
+</html>
+        
