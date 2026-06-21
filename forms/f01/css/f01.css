@@ -106,3 +106,33 @@ outline:none;
 font-size:13px;
 
 }
+
+select{
+
+width:100%;
+
+border:none;
+
+outline:none;
+
+background:white;
+
+font-size:13px;
+
+padding:2px;
+
+}
+
+input[type=date]{
+
+padding:2px;
+
+}
+
+table tr:hover{
+
+background:#f8f8f8;
+
+transition:.2s;
+
+}
