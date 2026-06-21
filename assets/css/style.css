@@ -498,3 +498,139 @@ footer hr{
     border:1px solid rgba(255,255,255,.25);
 }
 
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes zoomIn{
+    from{
+        opacity:0;
+        transform:scale(.85);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes slideLeft{
+    from{
+        opacity:0;
+        transform:translateX(-60px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes slideRight{
+    from{
+        opacity:0;
+        transform:translateX(60px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.fade-in{
+    animation:fadeIn .8s ease;
+}
+
+.zoom-in{
+    animation:zoomIn .7s ease;
+}
+
+.slide-left{
+    animation:slideLeft .8s ease;
+}
+
+.slide-right{
+    animation:slideRight .8s ease;
+}
+
+/* ==========================================================
+   GLASSMORPHISM
+========================================================== */
+
+.glass-card{
+    background:rgba(255,255,255,.22);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.30);
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 35px rgba(0,0,0,.12);
+}
+
+/* ==========================================================
+   TABLEAUX
+========================================================== */
+
+.table-container{
+    overflow-x:auto;
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#0056b3;
+    color:white;
+    padding:16px;
+    text-align:left;
+}
+
+table td{
+    padding:14px;
+    border-bottom:1px solid #e5e5e5;
+}
+
+table tr:hover{
+    background:#f4f8fc;
+}
+
+/* ==========================================================
+   BADGES
+========================================================== */
+
+.badge-success{
+    background:#28a745;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:13px;
+}
+
+.badge-warning{
+    background:#ffc107;
+    color:#222;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:13px;
+}
+
+.badge-danger{
+    background:#dc3545;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:
