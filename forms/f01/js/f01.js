@@ -362,6 +362,41 @@ const lignes=pdf.splitTextToSize(obs,170);
 
 pdf.text(lignes,20,y);
 
+y+=10;
+
+pdf.setFont("helvetica","bold");
+
+pdf.text("Analyse intelligente",20,y);
+
+y+=8;
+
+pdf.setFont("helvetica","normal");
+
+pdf.text(
+"Niveau de risque : "
++document.getElementById("niveauRisque").value,
+20,
+y
+);
+
+y+=8;
+
+pdf.text(
+"Décision : "
++document.getElementById("decisionInspection").value,
+20,
+y
+);
+
+y+=8;
+
+const conclusion=pdf.splitTextToSize(
+document.getElementById("conclusionIA").value,
+170
+);
+
+pdf.text(conclusion,20,y);
+
 pdf.save("F01_Inspection.pdf");
 
  }
@@ -462,7 +497,19 @@ pdf.text("Inspecteur",40,y+7);
 pdf.text("Entreprise",140,y+7);
 
 function genererRapport(){
+    
+rapport+="Numéro : "
++document.getElementById("numeroInspection").value
++"\n";
 
+rapport+="Date : "
++document.getElementById("dateHeure").value
++"\n";
+
+rapport+="Statut : "
++document.getElementById("statutInspection").value
++"\n\n";
+    
 const entreprise=document.getElementById("entreprise").value;
 
 const inspecteur=document.getElementById("inspecteur").value;
@@ -508,7 +555,79 @@ document.getElementById("rapport").value=rapport;
 }
 
 document
+    
+const liste=analyserInspection();
 
+rapport+="\n";
+
+rapport+="Infractions détectées\n";
+
+rapport+="-------------------------\n";
+
+if(liste.length===0){
+
+rapport+="Aucune anomalie détectée.\n";
+
+}else{
+
+liste.forEach((item,i)=>{
+
+rapport+=
+
+(i+1)
+
++". "
+
++item.anomalie
+
++"\n";
+
+rapport+="Article : "
+
++item.article
+
++"\n";
+
+rapport+="Mesure : "
+
++item.mesure
+
++"\n\n";
+
+});
+
+}
+
+rapport+="\n";
+
+rapport+="Analyse intelligente\n";
+
+rapport+="-------------------------\n";
+
+rapport+="Niveau de risque : ";
+
+rapport+=document.getElementById("niveauRisque").value;
+
+rapport+="\n";
+
+rapport+="Décision : ";
+
+rapport+=document.getElementById("decisionInspection").value;
+
+rapport+="\n\n";
+
+rapport+="Conclusion\n";
+
+rapport+="-------------------------\n";
+
+rapport+=document.getElementById("conclusionIA").value;
+
+rapport+="\n";
+
+genererConclusionIA();
+
+genererRapport();
+    
 .getElementById("btnRapport")
 
 .addEventListener(
@@ -518,6 +637,46 @@ document
 genererRapport
 
 );
+
+// Génère un numéro unique
+
+function genererNumeroInspection(){
+
+const maintenant=new Date();
+
+const annee=maintenant.getFullYear();
+
+let compteur=localStorage.getItem("compteurF01");
+
+if(!compteur){
+
+compteur=1;
+
+}else{
+
+compteur=parseInt(compteur)+1;
+
+}
+
+localStorage.setItem("compteurF01",compteur);
+
+const numero="F01-"+annee+"-"+String(compteur).padStart(6,"0");
+
+document.getElementById("numeroInspection").value=numero;
+
+}
+
+// Date et heure
+
+function remplirDateHeure(){
+
+const maintenant=new Date();
+
+document.getElementById("dateHeure").value=
+
+maintenant.toLocaleString();
+
+}
 
 document
 
@@ -531,6 +690,214 @@ document
 
 // Sauvegarde...
 
+verifierConformite();
+
+afficherInfractions();
+
+genererRapport();
+    
 genererRapport();
 
 });
+
+function verifierConformite(){
+
+let observations=document
+
+.getElementById("observations")
+
+.value
+
+.trim();
+
+let total=parseInt(
+
+document.getElementById("grand_total").value
+
+)||0;
+
+let statut="Conforme";
+
+if(observations.length>20){
+
+statut="À améliorer";
+
+}
+
+if(total===0){
+
+statut="Non conforme";
+
+}
+
+document.getElementById("statutInspection").value=statut;
+
+}
+
+window.addEventListener("load",()=>{
+
+genererNumeroInspection();
+
+remplirDateHeure();
+
+verifierConformite();
+
+});
+
+function analyserInspection(){
+
+let liste=[];
+
+const total=parseInt(
+document.getElementById("grand_total").value
+)||0;
+
+const heures=parseFloat(
+document.getElementById("heures_semaine").value
+)||0;
+
+const observations=document
+.getElementById("observations")
+.value
+.toLowerCase();
+
+if(total===0){
+
+liste.push({
+article:"Article 1",
+anomalie:"Aucun travailleur déclaré.",
+mesure:"Vérifier immédiatement les effectifs."
+});
+
+}
+
+if(heures>40){
+
+liste.push({
+article:"Durée du travail",
+anomalie:"Durée hebdomadaire supérieure à 40 heures.",
+mesure:"Mettre les horaires en conformité."
+});
+
+}
+
+if(observations.includes("absence")){
+
+liste.push({
+article:"Registre du personnel",
+anomalie:"Absence de document obligatoire.",
+mesure:"Présenter le registre lors du contrôle."
+});
+
+}
+
+if(observations.includes("sécurité")){
+
+liste.push({
+article:"Santé et sécurité",
+anomalie:"Mesures de sécurité insuffisantes.",
+mesure:"Mettre en place les équipements requis."
+});
+
+}
+
+return liste;
+
+}
+
+function afficherInfractions(){
+
+const liste=analyserInspection();
+
+let texte="";
+
+if(liste.length===0){
+
+texte="Aucune anomalie détectée.";
+
+}else{
+
+liste.forEach((item,index)=>{
+
+texte+=
+
+(index+1)+". "
+
++item.anomalie
+
++"\n";
+
+texte+="Article : "
+
++item.article
+
++"\n";
+
+texte+="Mesure : "
+
++item.mesure
+
++"\n\n";
+
+});
+
+}
+
+document
+
+.getElementById("infractions")
+
+.value=texte;
+
+}
+
+function genererConclusionIA(){
+
+const anomalies=analyserInspection();
+
+let risque="Faible";
+
+let decision="Conforme";
+
+let conclusion="";
+
+if(anomalies.length>=1){
+
+risque="Moyen";
+
+decision="Mise en demeure";
+
+}
+
+if(anomalies.length>=3){
+
+risque="Élevé";
+
+decision="Procès-verbal";
+
+}
+
+if(anomalies.length===0){
+
+conclusion=
+"Aucune anomalie majeure n'a été constatée. L'entreprise respecte les principales obligations vérifiées.";
+
+}else{
+
+conclusion=
+"L'inspection a permis de constater "
++anomalies.length+
+" anomalie(s). Des mesures correctives doivent être mises en œuvre dans les délais prescrits.";
+
+}
+
+document.getElementById("niveauRisque").value=risque;
+
+document.getElementById("decisionInspection").value=decision;
+
+document.getElementById("conclusionIA").value=conclusion;
+
+    }
+
+
+
