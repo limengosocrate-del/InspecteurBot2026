@@ -303,4 +303,8 @@ const SyncManager = {
 
     },
 
-  
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    SyncManager.init();
+});
