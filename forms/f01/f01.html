@@ -396,6 +396,110 @@ value="0">
 
 </section>
 
+ <!-- Organisation du travail -->
+
+<section class="bloc">
+
+<h3 class="section-title">
+Organisation du travail
+</h3>
+
+<table>
+
+<tr>
+
+<td>Heure de début</td>
+
+<td>
+<input
+type="time"
+id="heure_debut">
+</td>
+
+<td>Heure de fin</td>
+
+<td>
+<input
+type="time"
+id="heure_fin">
+</td>
+
+</tr>
+
+<tr>
+
+<td>Repos hebdomadaire</td>
+
+<td>
+
+<select id="repos">
+
+<option value=""></option>
+
+<option>Lundi</option>
+<option>Mardi</option>
+<option>Mercredi</option>
+<option>Jeudi</option>
+<option>Vendredi</option>
+<option>Samedi</option>
+<option>Dimanche</option>
+
+</select>
+
+</td>
+
+<td>Heures par semaine</td>
+
+<td>
+
+<input
+type="number"
+id="heures_semaine"
+readonly>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Salaire minimum observé</td>
+
+<td>
+
+<input
+type="number"
+id="salaire_min">
+
+</td>
+
+<td>Salaire maximum observé</td>
+
+<td>
+
+<input
+type="number"
+id="salaire_max">
+
+</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<label>
+Observations de l'inspecteur
+</label>
+
+<textarea
+id="observations"
+rows="6">
+</textarea>
+
+ </section>   
+
 <script src="js/f01.js"></script>
 
 </body>
