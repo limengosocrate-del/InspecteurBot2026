@@ -1,1 +1,1515 @@
+/*====================================================
+ INSPECTEURBOT IA RDC
+ Tableau de bord Professionnel V3.0
+ Développé par l'Inspecteur Limengo (Pmiller)
+====================================================*/
 
+/*=============================
+VARIABLES
+==========================*/
+
+:racine{
+
+--primaire:#005ecb;
+--primaire-foncé:#003b8f;
+--secondaire:#0b63d1;
+
+--succès :#16a34a ;
+--avertissement:#f59e0b;
+--danger:#dc2626;
+
+--blanc:#ffffff;
+--lumière:#f4f7fc;
+--gris:#eef2f7;
+
+--texte:#1f2937;
+--text-light:#6b7280;
+
+--border:#dbe2ea;
+
+--rayon:16px;
+
+--shadow:0 10px 30px rgba(0,0,0,.08);
+
+--transition:.35s;
+
+}
+
+/*=============================
+RÉINITIALISER
+==========================*/
+
+*{
+marge:0;
+marge intérieure : 0 ;
+box-sizing:border-box;
+}
+
+html{
+comportement de défilement : lisse ;
+}
+
+corps{
+
+police-family:"Segoe UI",sans-serif;
+arrière-plan:var(--light);
+couleur:var(--texte);
+
+affichage : flexible ;
+
+hauteur minimale : 100vh ;
+
+débordement-x:masqué;
+
+}
+
+un{
+text-decoration:none;
+couleur:hériter;
+}
+
+image{
+affichage : bloc ;
+largeur maximale : 100 % ;
+}
+
+bouton{
+
+bordure : aucune ;
+curseur : pointeur ;
+police-family:hériter;
+
+}
+
+saisir,
+zone de texte,
+sélectionner{
+
+contour : aucun ;
+police-family:hériter;
+
+}
+
+/*=============================
+BARRE LATÉRALE
+==========================*/
+
+.sidebar{
+
+position:fixe;
+
+gauche:0;
+haut:0;
+
+largeur : 270 px ;
+hauteur : 100vh ;
+
+arrière-plan : dégradé linéaire (180°, #003b8f, #005ecb);
+
+couleur : blanc ;
+
+affichage : flexible ;
+direction flexible : colonne ;
+
+ombre de boîte :var(--ombre);
+
+transition:.4s;
+
+z-index:1000;
+
+débordement:masqué;
+
+}
+
+/*==========================*/
+
+.sidebar-header{
+
+marge intérieure : 25 px ;
+
+alignement du texte : centré ;
+
+bordure-bas:1px solide rgba(255,255,255,.12);
+
+}
+
+.sidebar-header img{
+
+largeur : 85 px ;
+hauteur : 85 px ;
+
+marge:auto;
+
+rayon de bordure : 50 % ;
+
+bordure:4px solide rgba(255,255,255,.25);
+
+marge inférieure : 15 px ;
+
+objet-adapté:couvrir;
+
+}
+
+.sidebar-header h2{
+
+taille de police : 22 px ;
+police-weight:700;
+
+}
+
+.sidebar-header p{
+
+marge supérieure : 8 px ;
+taille de police : 13 px ;
+opacité : 0,8 ;
+
+}
+
+/*==========================*/
+
+.sidebar-menu{
+
+flex:1;
+débordement-y:auto;
+
+marge intérieure : 15px 0 ;
+
+}
+
+.sidebar-menu ul{
+
+style de liste : aucun ;
+
+}
+
+.sidebar-menu li{
+
+marge:8px 0;
+
+}
+
+.sidebar-menu a{
+
+affichage : flexible ;
+aligner-éléments:centre;
+écart : 15 px ;
+
+marge intérieure : 14px 22px ;
+
+transition:.3s;
+
+bordure gauche : 4px solide transparent ;
+
+taille de police : 15 px ;
+
+}
+
+.sidebar-menu a:hover{
+
+arrière-plan : rgba(255,255,255,.10);
+
+marge intérieure gauche : 28 px ;
+
+couleur de bordure gauche : #00d4ff ;
+
+}
+
+.sidebar-menu a.active{
+
+arrière-plan : rgba(255,255,255,.14);
+
+couleur de bordure gauche : #00d4ff ;
+
+}
+
+.sidebar-menu i{
+
+largeur : 22 px ;
+alignement du texte : centré ;
+taille de police : 20 px ;
+
+}
+
+.sidebar-footer{
+
+marge intérieure : 20 px ;
+
+alignement du texte : centré ;
+
+taille de police : 13 px ;
+
+bordure supérieure : 1px solide rgba(255,255,255,.15);
+
+opacité : 0,8 ;
+
+}
+
+/*====================================================
+CONTENU PRINCIPAL
+====================================================*/
+
+.principal{
+
+marge gauche : 270 px ;
+
+largeur:calculée(100% - 270px);
+
+hauteur minimale : 100vh ;
+
+marge intérieure : 30 px ;
+
+transition:.4s;
+
+}
+
+/*====================================================
+BARRE SUPÉRIEURE
+====================================================*/
+
+.topbar{
+
+affichage : flexible ;
+
+justifier-contenu:espace-entre;
+
+aligner-éléments:centre;
+
+arrière-plan : #fff;
+
+marge intérieure : 18px 25px ;
+
+bordure-radius:16px;
+
+ombre de boîte :var(--ombre);
+
+marge inférieure : 30 px ;
+
+}
+
+/*====================================================
+SECTION GAUCHE
+====================================================*/
+
+.topbar-left{
+
+affichage : flexible ;
+
+aligner-éléments:centre;
+
+écart : 20 px ;
+
+}
+
+.menu-toggle{
+
+taille de police : 24 px ;
+
+curseur : pointeur ;
+
+couleur:var(--primaire);
+
+transition:.3s;
+
+}
+
+.menu-toggle:hover{
+
+transformer:rotation(90deg);
+
+}
+
+/*====================================================
+RECHERCHE
+====================================================*/
+
+.zone-de-recherche{
+
+affichage : flexible ;
+
+aligner-éléments:centre;
+
+arrière-plan:var(--gris);
+
+marge intérieure : 10px 16px ;
+
+bordure-radius:50px;
+
+largeur : 340 px ;
+
+transition:.3s;
+
+}
+
+.search-box:focus-within{
+
+arrière-plan : #fff;
+
+box-shadow:0 0 0 3px rgba(0,94,203,.15);
+
+}
+
+.zone-de-recherche i{
+
+couleur:var(--text-light);
+
+marge droite : 10px ;
+
+}
+
+.zone de recherche input{
+
+bordure : aucune ;
+
+arrière-plan : transparent ;
+
+largeur : 100 % ;
+
+taille de police : 15 px ;
+
+couleur:var(--texte);
+
+}
+
+/*====================================================
+SECTION DROITE
+====================================================*/
+
+.topbar-right{
+
+affichage : flexible ;
+
+aligner-éléments:centre;
+
+écart : 22 px ;
+
+}
+
+/*====================================================
+NOTIFICATIONS
+====================================================*/
+
+.notification{
+
+position : relative ;
+
+curseur : pointeur ;
+
+taille de police : 22 px ;
+
+couleur:var(--primaire);
+
+transition:.3s;
+
+}
+
+.notification:hover{
+
+transform:scale(1.08);
+
+}
+
+.notification span{
+
+position:absolute;
+
+haut:-7px;
+
+droite : -7px ;
+
+largeur : 18 px ;
+
+hauteur : 18 px ;
+
+rayon de bordure : 50 % ;
+
+arrière-plan:var(--danger);
+
+couleur : #fff;
+
+taille de police : 10 px ;
+
+affichage : flexible ;
+
+justifier-contenu:centre;
+
+aligner-éléments:centre;
+
+police-weight:bold;
+
+}
+
+/*====================================================
+DATE
+====================================================*/
+
+.dashboard-date{
+
+affichage : flexible ;
+
+direction flexible : colonne ;
+
+aligner-éléments:flex-end;
+
+}
+
+.dashboard-date h3{
+
+taille de police : 15 px ;
+
+police-weight:600;
+
+couleur:var(--texte);
+
+}
+
+.dashboard-date span{
+
+taille de police : 13 px ;
+
+couleur:var(--text-light);
+
+}
+
+/*====================================================
+PROFIL
+====================================================*/
+
+.profile-user{
+
+affichage : flexible ;
+
+aligner-éléments:centre;
+
+écart : 12 px ;
+
+curseur : pointeur ;
+
+}
+
+.profile-user img{
+
+largeur : 48 px ;
+
+hauteur : 48 px ;
+
+rayon de bordure : 50 % ;
+
+objet-adapté:couvrir;
+
+border:3px solid var(--primary);
+
+}
+
+.profile-info{
+
+affichage : flexible ;
+
+direction flexible : colonne ;
+
+}
+
+.profile-info fort{
+
+taille de police : 15 px ;
+
+couleur:var(--texte);
+
+}
+
+.profile-info span{
+
+taille de police : 13 px ;
+
+couleur:var(--text-light);
+
+}
+
+/*====================================================
+ACCUEILLIR
+====================================================*/
+
+.accueillir{
+
+marge inférieure : 30 px ;
+
+}
+
+.bienvenue h1{
+
+taille de police : 30 px ;
+
+couleur:var(--primaire-foncé);
+
+marge inférieure : 8 px ;
+
+}
+
+.bienvenue p{
+
+couleur:var(--text-light);
+
+taille de police : 15 px ;
+
+}
+
+/*====================================================
+CARTES DE STATISTIQUES
+====================================================*/
+
+.cartes-de-tableau-tête{
+
+affichage : grille ;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+écart : 25 px ;
+
+marge inférieure : 35 px ;
+
+}
+
+/*====================================================*/
+
+.carte{
+
+arrière-plan:var(--blanc);
+
+bordure-radius:18px;
+
+marge intérieure : 25 px ;
+
+ombre de boîte :var(--ombre);
+
+affichage : flexible ;
+
+justifier-contenu:espace-entre;
+
+aligner-éléments:centre;
+
+transition:var(--transition);
+
+position : relative ;
+
+débordement:masqué;
+
+border:1px solid var(--border);
+
+}
+
+.card:hover{
+
+transformer:translateY(-8px);
+
+box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+/* Ligne décorative */
+
+.card::avant{
+
+contenu:"";
+
+position:absolute;
+
+gauche:0;
+
+haut:0;
+
+largeur : 5 px ;
+
+hauteur : 100 % ;
+
+arrière-plan:var(--primaire);
+
+}
+
+/*====================================================
+TEXTES
+====================================================*/
+
+.card-content h4{
+
+taille de police : 15 px ;
+
+police-weight:600;
+
+couleur:var(--text-light);
+
+marge inférieure : 10px ;
+
+}
+
+.card-content h2{
+
+taille de police : 30 px ;
+
+police-weight:700;
+
+couleur:var(--texte);
+
+marge inférieure : 8 px ;
+
+}
+
+.card-content p{
+
+taille de police : 13 px ;
+
+couleur:var(--succès);
+
+police-weight:600;
+
+}
+
+/*====================================================
+ICĆ”NES
+====================================================*/
+
+.card-icon{
+
+largeur : 70 px ;
+
+hauteur : 70 px ;
+
+rayon de bordure : 50 % ;
+
+affichage : flexible ;
+
+justifier-contenu:centre;
+
+aligner-éléments:centre;
+
+taille de police : 30 px ;
+
+couleur : #fff;
+
+}
+
+/*====================================================
+COULEURS
+====================================================*/
+
+.card-primary .card-icon{
+
+arrière-plan:var(--primaire);
+
+}
+
+.card-success .card-icon{
+
+arrière-plan:var(--succès);
+
+}
+
+.card-warning .card-icon{
+
+arrière-plan:var(--avertissement);
+
+}
+
+.card-danger .card-icon{
+
+arrière-plan:var(--danger);
+
+}
+
+/*====================================================
+BADGES
+====================================================*/
+
+.badge{
+
+affichage : bloc en ligne ;
+
+marge intérieure : 6px 12px ;
+
+bordure-radius:30px;
+
+taille de police : 12 px ;
+
+police-weight:600;
+
+}
+
+.badge-succès{
+
+arrière-plan : #dcfce7 ;
+
+couleur : #166534 ;
+
+}
+
+.badge-avertissement{
+
+arrière-plan : #fef3c7 ;
+
+couleur : #92400e ;
+
+}
+
+.badge-danger{
+
+arrière-plan : #fee2e2 ;
+
+couleur : #991b1b ;
+
+}
+
+.badge-primaire{
+
+arrière-plan : #dbeafe ;
+
+couleur : #1d4ed8 ;
+
+}
+
+/*====================================================
+ANIMATION
+====================================================*/
+
+@keyframes fadeUp{
+
+depuis{
+
+opacité : 0 ;
+
+transformer:translateY(20px);
+
+}
+
+à{
+
+opacité : 1 ;
+
+transformer:translateY(0);
+
+}
+
+}
+
+.carte{
+
+animation:fadeUp .6s ease;
+
+}
+
+/*====================================================
+TABLEAU DES INSPECTIONS
+====================================================*/
+
+.table-container{
+
+arrière-plan:var(--blanc);
+
+marge intérieure : 25 px ;
+
+bordure-radius:18px;
+
+ombre de boîte :var(--ombre);
+
+border:1px solid var(--border);
+
+débordement-x:auto;
+
+marge inférieure : 35 px ;
+
+}
+
+/*====================================================*/
+
+.table-header{
+
+affichage : flexible ;
+
+justifier-contenu:espace-entre;
+
+aligner-éléments:centre;
+
+marge inférieure : 20 px ;
+
+}
+
+.table-header h2{
+
+taille de police : 22 px ;
+
+couleur:var(--primaire-foncé);
+
+}
+
+.table-header bouton{
+
+arrière-plan:var(--primaire);
+
+couleur : #fff;
+
+marge intérieure : 10px 18px ;
+
+bordure-radius:10px;
+
+police-weight:600;
+
+transition:.3s;
+
+}
+
+.table-header bouton:hover{
+
+background:var(--primary-dark);
+
+}
+
+/*====================================================*/
+
+tableau{
+
+largeur : 100 % ;
+
+effondrement de la frontière : effondrement ;
+
+largeur minimale : 800 px ;
+
+}
+
+tête{
+
+arrière-plan:var(--primaire);
+
+couleur : #fff;
+
+}
+
+tête th{
+
+marge intérieure : 15 px ;
+
+taille de police : 14 px ;
+
+alignement du texte : gauche ;
+
+police-weight:600;
+
+}
+
+tbody tr{
+
+border-bottom:1px solid var(--border);
+
+transition:.3s;
+
+}
+
+tbody tr:hover{
+
+arrière-plan : #f8fbff ;
+
+}
+
+tbody td{
+
+marge intérieure : 15 px ;
+
+taille de police : 14 px ;
+
+couleur:var(--texte);
+
+alignement vertical : milieu ;
+
+}
+
+/*====================================================
+STATUTS
+====================================================*/
+
+.statut{
+
+affichage : en ligne flexible ;
+
+aligner-éléments:centre;
+
+justifier-contenu:centre;
+
+marge intérieure : 6px 14px ;
+
+bordure-radius:30px;
+
+taille de police : 12 px ;
+
+police-weight:700;
+
+}
+
+.status-success{
+
+arrière-plan : #dcfce7 ;
+
+couleur : #166534 ;
+
+}
+
+.status-avertissement{
+
+arrière-plan : #fef3c7 ;
+
+couleur : #92400e ;
+
+}
+
+.status-danger{
+
+arrière-plan : #fee2e2 ;
+
+couleur : #991b1b ;
+
+}
+
+.status-info{
+
+arrière-plan : #dbeafe ;
+
+couleur : #1d4ed8 ;
+
+}
+
+/*====================================================
+ACTION DES BOUTONS
+====================================================*/
+
+.action-buttons{
+
+affichage : flexible ;
+
+écart : 10px ;
+
+}
+
+.btn-action{
+
+largeur : 38 px ;
+
+hauteur : 38 px ;
+
+affichage : flexible ;
+
+aligner-éléments:centre;
+
+justifier-contenu:centre;
+
+bordure-radius:10px;
+
+couleur : #fff;
+
+transition:.3s;
+
+taille de police : 16 px ;
+
+}
+
+.btn-view{
+
+arrière-plan : #2563eb ;
+
+}
+
+.btn-edit{
+
+arrière-plan : #f59e0b ;
+
+}
+
+.btn-supprimer{
+
+arrière-plan : #dc2626 ;
+
+}
+
+.btn-action:hover{
+
+transformer:translateY(-3px);
+
+box-shadow:0 8px 16px rgba(0,0,0,.15);
+
+}
+
+/*====================================================
+LIGNES ALTERNĆ‰ES
+====================================================*/
+
+tbody tr:nth-enfant(pair){
+
+arrière-plan : #fcfcfd ;
+
+}
+
+/*====================================================
+PAGINATION
+====================================================*/
+
+.pagination{
+
+affichage : flexible ;
+
+justifier-contenu:flex-end;
+
+aligner-éléments:centre;
+
+écart : 10px ;
+
+marge supérieure : 20 px ;
+
+}
+
+bouton .pagination{
+
+largeur : 40 px ;
+
+hauteur : 40 px ;
+
+bordure-radius:10px;
+
+arrière-plan:var(--gris);
+
+couleur:var(--texte);
+
+transition:.3s;
+
+}
+
+bouton de pagination:hover{
+
+arrière-plan:var(--primaire);
+
+couleur : #fff;
+
+}
+
+.pagination .active{
+
+arrière-plan:var(--primaire);
+
+couleur : #fff;
+
+}
+
+/*====================================================
+TABLE RÉACTIVE
+====================================================*/
+
+@media(max-width:768px){
+
+.table-container{
+
+marge intérieure : 15 px ;
+
+}
+
+.table-header{
+
+direction flexible : colonne ;
+
+align-items:flex-start;
+
+écart : 15 px ;
+
+}
+
+tableau{
+
+largeur minimale : 650 px ;
+
+}
+
+}
+/*====================================================
+GRILLE DES WIDGETS
+====================================================*/
+
+.tableau-de-tableau-de-bord{
+
+affichage : grille ;
+
+grille-template-columns:2fr 1fr;
+
+écart : 25 px ;
+
+marge inférieure : 35 px ;
+
+}
+
+/*====================================================
+CARTE
+====================================================*/
+
+.widget{
+
+arrière-plan:var(--blanc);
+
+bordure-radius:18px;
+
+marge intérieure : 25 px ;
+
+ombre de boîte :var(--ombre);
+
+border:1px solid var(--border);
+
+}
+
+.widget-header{
+
+affichage : flexible ;
+
+justifier-contenu:espace-entre;
+
+aligner-éléments:centre;
+
+marge inférieure : 20 px ;
+
+}
+
+.widget-header h3{
+
+taille de police : 20 px ;
+
+couleur:var(--primaire-foncé);
+
+police-weight:700;
+
+}
+
+.widget-header a{
+
+couleur:var(--primaire);
+
+taille de police : 14 px ;
+
+police-weight:600;
+
+}
+
+/*====================================================
+GRAPHIQUES
+====================================================*/
+
+.graphique
+
+/*====================================================
+CHAT IA - INSPECTEURBOT
+====================================================*/
+
+.chat-widget{
+
+arrière-plan:var(--blanc);
+
+bordure-radius:18px;
+
+ombre de boîte :var(--ombre);
+
+border:1px solid var(--border);
+
+affichage : flexible ;
+
+direction flexible : colonne ;
+
+hauteur : 550 px ;
+
+débordement:masqué;
+
+}
+
+.chat-header{
+
+arrière-plan:var(--primaire);
+
+couleur : #fff;
+
+marge intérieure : 18px 20px ;
+
+taille de police : 18 px ;
+
+police-weight:700;
+
+affichage : flexible ;
+
+aligner-éléments:centre;
+
+écart : 12 px ;
+
+}
+
+.messages-de-chat{
+
+flex:1;
+
+marge intérieure : 20 px ;
+
+débordement-y:auto;
+
+arrière-plan : #f8fafc ;
+
+}
+
+.message{
+
+largeur maximale : 80 % ;
+
+marge intérieure : 12px 16px ;
+
+marge inférieure : 15 px ;
+
+bordure-radius:14px;
+
+hauteur de ligne : 1,6 ;
+
+animation:fadeUp .3s ease;
+
+}
+
+.message.bot{
+
+arrière-plan : #e8f1ff ;
+
+couleur:var(--texte);
+
+bordure-haut-gauche-rayon:4px;
+
+}
+
+.message.user{
+
+arrière-plan:var(--primaire);
+
+couleur : #fff;
+
+marge gauche : automatique ;
+
+bordure-haut-droite-rayon:4px;
+
+}
+
+.chat-input{
+
+affichage : flexible ;
+
+écart : 10px ;
+
+marge intérieure : 18 px ;
+
+border-top:1px solide var(--border);
+
+arrière-plan : #fff;
+
+}
+
+.chat-input input{
+
+flex:1;
+
+marge intérieure : 12px 15px ;
+
+border:1px solid var(--border);
+
+bordure-radius:10px;
+
+taille de police : 15 px ;
+
+}
+
+.chat-input button{
+
+marge intérieure : 12px 22px ;
+
+arrière-plan:var(--primaire);
+
+couleur : #fff;
+
+bordure-radius:10px;
+
+police-weight:600;
+
+transition:.3s;
+
+}
+
+.chat-input bouton:hover{
+
+background:var(--primary-dark);
+
+}
+
+/*====================================================
+BARRE DE DÉFILEMENT
+====================================================*/
+
+::-webkit-scrollbar{
+
+largeur : 8 px ;
+
+hauteur : 8 px ;
+
+}
+
+::-webkit-scrollbar-track{
+
+arrière-plan : #eef2f7 ;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+arrière-plan : #b7c4d6 ;
+
+bordure-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+arrière-plan:var(--primaire);
+
+}
+
+/*====================================================
+SENSIBLE
+====================================================*/
+
+@media(max-width:1200px){
+
+.tableau-de-tableau-de-bord{
+
+grille-template-colonnes:1fr;
+
+}
+
+}
+
+@media(max-width:992px){
+
+.sidebar{
+
+largeur : 80 px ;
+
+}
+
+.sidebar-header h2,
+.sidebar-header p,
+.sidebar-menu span,
+.sidebar-footer{
+
+affichage : aucun ;
+
+}
+
+.sidebar-menu a{
+
+justifier-contenu:centre;
+
+marge intérieure : 16 px ;
+
+}
+
+.principal{
+
+marge gauche : 80px ;
+
+largeur:calculée(100% - 80px);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.principal{
+
+marge gauche : 0 ;
+
+largeur : 100 % ;
+
+marge intérieure : 20 px ;
+
+}
+
+.sidebar{
+
+gauche : -270px ;
+
+}
+
+.sidebar.active{
+
+gauche:0;
+
+}
+
+.topbar{
+
+direction flexible : colonne ;
+
+aligner-éléments:étirer;
+
+écart : 15 px ;
+
+}
+
+.barre-haut-gauche,
+.topbar-right{
+
+largeur : 100 % ;
+
+justifier-contenu:espace-entre;
+
+}
+
+.zone-de-recherche{
+
+largeur : 100 % ;
+
+}
+
+.cartes-de-tableau-tête{
+
+grille-template-colonnes:1fr;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.bienvenue h1{
+
+taille de police : 24 px ;
+
+}
+
+.carte{
+
+direction flexible : colonne ;
+
+alignement du texte : centré ;
+
+écart : 18 px ;
+
+}
+
+.profile-info{
+
+affichage : aucun ;
+
+}
+
+.chat-widget{
+
+hauteur : 450 px ;
+
+}
+
+}
+
+/*====================================================
+FIN DU TABLEAU DE BORD CSS V3.0
+InspecteurBot IA RDC
+====================================================*/
+
+  
