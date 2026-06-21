@@ -498,9 +498,66 @@ id="observations"
 rows="6">
 </textarea>
 
- </section>   
+ </section>  
+
+ <!-- Actions -->
+
+<section class="bloc">
+
+<div class="actions">
+
+<button
+type="button"
+id="btnEnregistrer">
+💾 Enregistrer
+</button>
+
+<button
+type="button"
+id="btnPDF">
+📄 PDF
+</button>
+
+<button
+type="button"
+id="btnRapport">
+📑 Générer le rapport
+</button>
+
+<button
+type="button"
+id="btnImprimer">
+🖨 Imprimer
+</button>
+
+<button
+type="reset"
+id="btnReset">
+🔄 Réinitialiser
+</button>
+
+</div>
+
+</section>  
+
+<section class="bloc">
+
+<h3>Rapport automatique</h3>
+
+<textarea
+
+id="rapport"
+
+rows="18"
+
+readonly>
+
+</textarea>
+
+</section>
 
 <script src="js/f01.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </body>
 </html>
