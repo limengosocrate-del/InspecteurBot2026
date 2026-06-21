@@ -1,35 +1,25 @@
-import logo from "../assets/images/logo-igt.png";
+import batiment from "../assets/images/batiment-igt.png";
 
-function Header() {
+function Home() {
   return (
-    <header className="header">
+    <main>
+      <section className="hero">
 
-      <div className="logo-container">
         <img
-          src={logo}
-          alt="Logo IGT"
-          className="logo"
+          src={batiment}
+          alt="Bâtiment IGT"
+          className="hero-image"
         />
 
-        <div>
-          <h1>INSPECTEURBOT-IA</h1>
-          <p>Inspection Générale du Travail</p>
-        </div>
-      </div>
+        <h2>Bienvenue sur InspecteurBot-IA</h2>
 
-      <nav>
-        <ul className="menu">
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#">Lois</a></li>
-          <li><a href="#">Conventions</a></li>
-          <li><a href="#">Actualités</a></li>
-          <li><a href="#">Assistant IA</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
+        <p>
+          Votre assistant intelligent dédié à l'Inspection Générale du Travail.
+        </p>
 
-    </header>
+      </section>
+    </main>
   );
 }
 
-export default Header;
+export default Home;
