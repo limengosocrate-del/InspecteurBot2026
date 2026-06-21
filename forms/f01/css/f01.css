@@ -206,3 +206,73 @@ display:block;
 margin-bottom:5px;
 
 }
+
+.actions{
+
+display:flex;
+
+justify-content:center;
+
+gap:12px;
+
+flex-wrap:wrap;
+
+margin-top:20px;
+
+}
+
+.actions button{
+
+padding:10px 18px;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+font-size:14px;
+
+font-weight:bold;
+
+background:#1565c0;
+
+color:white;
+
+transition:.3s;
+
+}
+
+.actions button:hover{
+
+transform:translateY(-2px);
+
+opacity:.9;
+
+}
+
+#btnReset{
+
+background:#c62828;
+
+}
+
+#btnPDF{
+
+background:#2e7d32;
+
+}
+
+#btnImprimer{
+
+background:#6d4c41;
+
+  }
+
+#btnRapport{
+
+background:#512da8;
+
+color:white;
+
+  }
