@@ -178,3 +178,31 @@ font-weight:bold;
 text-align:center;
 
 }
+
+textarea{
+
+width:100%;
+
+padding:10px;
+
+margin-top:8px;
+
+resize:vertical;
+
+border:1px solid #444;
+
+font-size:13px;
+
+font-family:Arial,Helvetica,sans-serif;
+
+}
+
+label{
+
+font-weight:bold;
+
+display:block;
+
+margin-bottom:5px;
+
+}
